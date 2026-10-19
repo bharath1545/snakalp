@@ -19,8 +19,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{font-family:var(--body);background-color:var(--bg);color:var(--text);line-height:1.6;
-  background-image:linear-gradient(rgba(217,255,79,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(217,255,79,.035) 1px,transparent 1px);
-  background-size:44px 44px;background-attachment:fixed}
+  background-image:radial-gradient(circle at top left,rgba(217,255,79,.16),transparent 24%),radial-gradient(circle at bottom right,rgba(255,105,79,.12),transparent 28%),linear-gradient(rgba(217,255,79,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(217,255,79,.035) 1px,transparent 1px);
+  background-size:auto,auto,44px 44px,44px 44px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(17,19,16,0),rgba(17,19,16,.56));z-index:-1}
 a{color:var(--cyan)}
 :focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
@@ -28,6 +29,8 @@ section{padding:72px 0}
 h1,h2,h3{font-family:var(--display);line-height:1.1}
 h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
 .lead{color:var(--muted);max-width:60ch;margin-bottom:34px}
+.section-header{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:28px}
+.section-header h2{margin-bottom:0}
 
 /* nav */
 nav{position:sticky;top:0;z-index:20;background:rgba(17,19,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,255,79,.22)}
@@ -77,15 +80,36 @@ body.page-turning{overflow-x:hidden}
   background:var(--cyan);color:#111310;clip-path:polygon(2% 0,100% 0,98% 100%,0 100%)}
 .motto{color:var(--muted);font-size:1.1rem}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:38px 0 30px;text-align:left}
-.fact{border:1px solid var(--line);border-radius:4px;padding:16px 18px;background:rgba(17,19,16,.72);backdrop-filter:blur(8px)}
+.fact{border:1px solid var(--line);border-radius:4px;padding:16px 18px;background:rgba(17,19,16,.72);backdrop-filter:blur(8px);box-shadow:0 18px 26px rgba(0,0,0,.12);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.fact:hover{transform:translateY(-4px);border-color:rgba(217,255,79,.6);box-shadow:0 24px 32px rgba(0,0,0,.18)}
 .fact small{color:var(--muted);display:block;font-size:.75rem;font-weight:600;text-transform:uppercase}
 .fact b{font-family:var(--display);font-size:1.3rem}
 .cta-row{display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem var(--body);padding:13px 26px;border-radius:999px;color:#111310;text-decoration:none;
+  background:linear-gradient(135deg,var(--cyan),#eaf77a);transition:transform .15s,box-shadow .15s,filter .15s;box-shadow:0 16px 32px rgba(217,255,79,.16)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 20px 36px rgba(217,255,79,.26);filter:saturate(1.04)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text);box-shadow:none;border-radius:999px}
 #countdown{display:flex;justify-content:flex-start;gap:8px;margin-top:28px;flex-wrap:wrap}
-#countdown div{min-width:76px;border:1px solid var(--line);border-radius:4px;padding:8px 12px;background:rgba(17,19,16,.8)}
+#countdown div{min-width:76px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:linear-gradient(180deg,rgba(17,19,16,.9),rgba(25,28,23,.78));box-shadow:inset 0 1px rgba(255,255,255,.04)}
 #countdown b{display:block;font-family:var(--display);font-size:2rem}
 #countdown small{color:var(--muted)}
 .cd-note{color:var(--muted);margin-top:10px;font-size:.9rem}
+.highlight-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:stretch}
+.feature-card{position:relative;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:flex-start;border-color:rgba(217,255,79,.18);background:linear-gradient(180deg,rgba(25,28,23,.96),rgba(18,20,17,.96));}
+.feature-card::before{content:"";position:absolute;inset:auto -20% -45% auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(217,255,79,.24),transparent 60%);pointer-events:none}
+.feature-card:hover{border-color:rgba(217,255,79,.55) !important}
+.feature-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;margin-bottom:16px;background:linear-gradient(135deg,rgba(217,255,79,.18),rgba(255,105,79,.12));font-size:1.5rem;border:1px solid rgba(255,255,255,.06)}
+.feature-card h3{margin-bottom:8px}
+.feature-card p{margin-top:0}
+.stats-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-top:12px}
+.stat-card{padding:22px 18px;border:1px solid rgba(217,255,79,.18);border-radius:16px;background:linear-gradient(180deg,rgba(25,28,23,.7),rgba(16,18,15,.9));text-align:center;box-shadow:0 20px 30px rgba(0,0,0,.12)}
+.stat-card strong{display:block;font-family:var(--display);font-size:clamp(2rem,5vw,3rem);color:var(--cyan);line-height:1}
+.stat-card span{display:block;margin-top:8px;color:var(--muted);font-size:.9rem;text-transform:uppercase;letter-spacing:.08em}
+.partners{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.partner-chip{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border:1px solid rgba(217,255,79,.18);border-radius:999px;background:rgba(17,19,16,.4);color:var(--text);font-weight:600;letter-spacing:.03em}
+.cta-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 30px;border:1px solid rgba(217,255,79,.2);border-radius:18px;background:linear-gradient(135deg,rgba(217,255,79,.08),rgba(255,105,79,.05));box-shadow:0 30px 60px rgba(0,0,0,.14)}
+.cta-banner h3{font-size:clamp(1.7rem,4vw,2.6rem);margin:8px 0 6px}
+.cta-banner p{color:var(--muted);max-width:60ch}
 
 /* details */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
@@ -167,7 +191,7 @@ input.bad{border-color:var(--danger)}
 footer{border-top:1px solid rgba(217,255,79,.22);padding:34px 0;color:var(--muted);text-align:center;font-size:.92rem}
 footer b{color:var(--text)}
 @media (min-width:761px){.hero{text-align:left}.hero .logos{margin-bottom:54px}.hero h1{font-size:clamp(5.5rem,10vw,9rem)}.hero .facts{max-width:900px}.hero .cta-row,#countdown{justify-content:flex-start}}
-@media (max-width:760px){nav .wrap{min-height:0;display:block;padding-top:10px}.brand{display:block;width:max-content;margin:0 auto 4px}.menu-clip{overflow-x:auto;scrollbar-width:none}.menu-clip::-webkit-scrollbar{display:none}nav .menu{width:max-content;min-width:100%;justify-content:center;gap:9px}nav .menu a,nav .menu button{padding:12px 0 10px;font-size:.75rem}.nav-dropdown .dropdown{top:100%;left:-10px}.logos{grid-template-columns:1fr;justify-items:stretch;gap:12px;text-align:left;margin-bottom:22px}.hero{padding-top:34px;text-align:center}.hero::before{background-position:58% center}.hero .logos{margin-bottom:22px}.hero h1{margin-left:0}.hero .tag{margin-left:auto;margin-right:auto}.hero .motto{margin-left:auto;margin-right:auto}.logos .inst{width:100%;justify-content:flex-start}.logos .inst:last-child{justify-content:flex-start;flex-direction:row-reverse;text-align:left!important}.inst-logo.ajiet{width:70px;height:70px}.inst-logo.ieee{width:120px;height:68px}.logos .inst b{font-size:1rem}.logos .inst small{font-size:.76rem}.facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0}.fact{padding:12px}.fact b{font-size:1.05rem}.cta-row,#countdown{justify-content:center}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.milestone{padding-right:12px}.schedule-grid{grid-template-columns:1fr}.schedule-day{min-height:0}.thank-you{min-height:calc(100vh - 100px)}}
+@media (max-width:760px){nav .wrap{min-height:0;display:block;padding-top:10px}.brand{display:block;width:max-content;margin:0 auto 4px}.menu-clip{overflow:visible}nav .menu{width:100%;min-width:0;justify-content:space-between;gap:3px;white-space:normal}nav .menu a,nav .menu button{padding:12px 0 10px;font-size:.68rem}.nav-dropdown .dropdown{top:100%;left:-10px;z-index:30}.logos{grid-template-columns:1fr;justify-items:stretch;gap:12px;text-align:left;margin-bottom:22px}.hero{padding-top:34px;text-align:center}.hero::before{background-position:58% center}.hero .logos{margin-bottom:22px}.hero h1{margin-left:0}.hero .tag{margin-left:auto;margin-right:auto}.hero .motto{margin-left:auto;margin-right:auto}.logos .inst{width:100%;justify-content:flex-start}.logos .inst:last-child{justify-content:flex-start;flex-direction:row-reverse;text-align:left!important}.inst-logo.ajiet{width:70px;height:70px}.inst-logo.ieee{width:120px;height:68px}.logos .inst b{font-size:1rem}.logos .inst small{font-size:.76rem}.facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0}.fact{padding:12px}.fact b{font-size:1.05rem}.cta-row,#countdown{justify-content:center}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.milestone{padding-right:12px}.schedule-grid{grid-template-columns:1fr}.schedule-day{min-height:0}.cta-banner{flex-direction:column;align-items:flex-start}.thank-you{min-height:calc(100vh - 100px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -222,7 +246,7 @@ footer b{color:var(--text)}
       <div class="fact"><small>Event dates</small><b>27–28 November 2026</b></div>
       <div class="fact"><small>Idea deadline</small><b>8 November 2026</b></div>
       <div class="fact"><small>Prize pool</small><b>₹60,000</b></div>
-      <div class="fact"><small>Team size</small><b>Exactly 4 members</b></div>
+      <div class="fact"><small>Team size</small><b>Exactly 3 members</b></div>
     </div>
     <div class="cta-row">
       <a class="btn" href="#registration">Submit your idea</a>
@@ -239,13 +263,85 @@ footer b{color:var(--text)}
   </div>
 </header>
 
+<section class="highlights view" data-view="home">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="pill">Why teams join</span>
+      <h2>Built for bold ideas and fast execution.</h2>
+    </div>
+    <div class="grid highlight-grid">
+      <article class="card feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Rapid prototyping</h3>
+        <p>Turn raw concepts into practical demos in just one intense 24-hour sprint.</p>
+      </article>
+      <article class="card feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>Mentor support</h3>
+        <p>Get guidance, feedback, and direction from mentors and organisers during the build process.</p>
+      </article>
+      <article class="card feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Real-world impact</h3>
+        <p>Work on ideas spanning sustainability, AI, healthcare, mobility, and smart communities.</p>
+      </article>
+      <article class="card feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Exposure & rewards</h3>
+        <p>Showcase your idea, connect with peers, and compete for a ₹60,000 prize pool.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="view" data-view="home">
+  <div class="wrap">
+    <div class="stats-strip">
+      <div class="stat-card"><strong>24</strong><span>hours</span></div>
+      <div class="stat-card"><strong>₹60k</strong><span>prize pool</span></div>
+      <div class="stat-card"><strong>3</strong><span>members</span></div>
+      <div class="stat-card"><strong>1</strong><span>national stage</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" data-view="home">
+  <div class="wrap">
+    <div class="section-header">
+      <span class="pill">Event ecosystem</span>
+      <h2>Where ideas meet execution, mentorship, and recognition.</h2>
+    </div>
+    <div class="partners" aria-label="Partner and community highlights">
+      <span class="partner-chip">AJIET</span>
+      <span class="partner-chip">IEEE</span>
+      <span class="partner-chip">Innovation</span>
+      <span class="partner-chip">ECE</span>
+      <span class="partner-chip">Sustainability</span>
+      <span class="partner-chip">Smart Tech</span>
+    </div>
+  </div>
+</section>
+
+<section class="view" data-view="home">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div>
+        <span class="pill">Ready to build?</span>
+        <h3>Submit your idea and turn your prototype into a real-world impact story.</h3>
+        <p>Bring your best team, pitch your strongest concept, and compete at a national level with the support of mentors and organisers.</p>
+      </div>
+      <a class="btn" href="#registration">Submit your idea</a>
+    </div>
+  </div>
+</section>
+
 <section id="details" class="view" data-view="about">
   <div class="wrap">
     <h2>Everything you need to know</h2>
     <p class="lead">Sankalp’26 is organised by the IEEE Student Branch, AJIET, in association with the Department of Electronics and Communication Engineering, AJIET, with support from IEEE Mangalore Subsection. Submit your idea by 8 November 2026. Selected teams will be announced on 20 November.</p>
     <div class="grid">
       <div class="card"><h3>Who can participate</h3><p>Open to all B.E. / B.Tech students from any college in India.</p></div>
-      <div class="card"><h3>Team size</h3><p>Every team must have exactly 4 registered members. Enter all four members’ names, USNs and email addresses in the idea form.</p></div>
+      <div class="card"><h3>Team size</h3><p>Every team must have exactly 3 registered members. Enter all three members’ names, USNs and email addresses in the idea form.</p></div>
       <div class="card"><h3>Selection and payment</h3><p>All submitted ideas will be evaluated. Selected teams will be announced on 20 November and invited to complete final registration and payment through the official registration form. Payment deadline will be announced with the results.</p>
         <ul><li>At least one IEEE member: ₹500 per team</li><li>No IEEE members: ₹700 per team</li><li>Non-refundable once selected and registration is completed</li></ul></div>
       <div class="card"><h3>Problem domains</h3><p>AI and machine learning, healthcare, smart cities and sustainability, education and accessibility, IoT and embedded systems, or open innovation.</p><p>The final theme and any track restrictions will be announced by the committee.</p></div>
@@ -310,7 +406,7 @@ footer b{color:var(--text)}
       </fieldset>
 
       <div id="members"></div>
-      <p class="hint" style="margin:-8px 0 22px">All four member records are required. Member 1 is the team leader.</p>
+      <p class="hint" style="margin:-8px 0 22px">All three member records are required. Member 1 is the team leader.</p>
 
       <fieldset>
         <legend>Idea details</legend>
@@ -514,8 +610,19 @@ if(!location.hash)history.replaceState(null,'','#home');
 window.addEventListener('hashchange',()=>showPage(true));
 showPage();
 aboutButton.addEventListener('click',()=>{
-  const open=aboutMenu.classList.toggle('open');
+  const isMobile=window.matchMedia('(max-width:760px)').matches;
+
+  if(isMobile){
+    location.hash='#about';
+    aboutMenu.classList.remove('open');
+    aboutButton.setAttribute('aria-expanded','false');
+    return;
+  }
+
+  const open=!aboutMenu.classList.contains('open');
+  aboutMenu.classList.toggle('open',open);
   aboutButton.setAttribute('aria-expanded',String(open));
+  if(open){location.hash='#about';}
 });
 document.addEventListener('click',event=>{
   if(!aboutMenu.contains(event.target)){
@@ -547,7 +654,7 @@ document.addEventListener('keydown',event=>{
 
 /* ============== member rows ============== */
 const membersBox=document.getElementById('members');
-for(let i=1;i<=4;i++){
+for(let i=1;i<=3;i++){
   membersBox.insertAdjacentHTML('beforeend',`
   <fieldset data-member="${i}">
     <legend>Member ${i}${i===1?' (team leader)':''}</legend>
@@ -606,7 +713,7 @@ function validate(){
   if(!okExt.test(f.name)){setMsg('Only PowerPoint files (.ppt or .pptx) are accepted.','err');return false}
   if(f.size>MAX_MB*1048576){setMsg(`Your file is larger than ${MAX_MB} MB. Compress the images in your presentation and upload it again.`,'err');return false}
   if(bad.length){
-    setMsg('Enter all four team members. Each USN needs 8 to 12 letters or digits, and each email and USN must be unique.','err');
+    setMsg('Enter all three team members. Each USN needs 8 to 12 letters or digits, and each email and USN must be unique.','err');
     bad[0].focus();return false;
   }
   return true;
