@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sankalp’26 – National Level 24 Hours Hackathon | AJIET Mangaluru</title>
+<meta name="description" content="Sankalp’26: a national level 24 hours hackathon at AJIET, Mangaluru, on 7 and 8 November 2026. Submit your idea by 25 October.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111310; --bg2:#191c17; --panel:#20241d; --line:#41463b;
+  --text:#f2f1e9; --muted:#a8ad9d; --blue:#d9ff4f; --violet:#ff694f; --cyan:#d9ff4f;
+  --danger:#ff7565; --ok:#d9ff4f;
+  --display:'Bricolage Grotesque','Trebuchet MS',sans-serif;
+  --body:'Figtree','Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--body);background-color:var(--bg);color:var(--text);line-height:1.6;
+  background-image:linear-gradient(rgba(217,255,79,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(217,255,79,.035) 1px,transparent 1px);
+  background-size:44px 44px;background-attachment:fixed}
+a{color:var(--cyan)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1,h2,h3{font-family:var(--display);line-height:1.1}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:34px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(17,19,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,255,79,.22)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--text);text-decoration:none}
+.brand span{color:var(--cyan)}
+nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+nav ul a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem var(--body);padding:13px 26px;border-radius:4px;color:#111310;text-decoration:none;
+  background:var(--cyan);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,255,79,.22)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:60px 0 70px;text-align:center;border-bottom:1px solid rgba(217,255,79,.2)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(17,19,16,.98) 0%,rgba(17,19,16,.8) 47%,rgba(17,19,16,.66) 100%),url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=85') center 48%/cover no-repeat}
+.hero::after{content:"SANKALP / 26";position:absolute;right:-.04em;bottom:-.27em;z-index:-1;color:rgba(217,255,79,.045);font:800 clamp(6rem,19vw,18rem)/.9 var(--display);white-space:nowrap;pointer-events:none}
+.hero .wrap{position:relative}
+.hero .pill{margin-bottom:12px}
+.hero h1{margin-left:-.07em}
+.hero .tag{margin-left:0}
+.hero .motto{max-width:48ch}
+.logos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:20px;text-align:left;margin-bottom:34px}
+.logos .inst b{display:block;font-family:var(--display);font-size:clamp(1rem,2.4vw,1.5rem)}
+.logos .inst small{color:var(--muted);font-size:.85rem}
+.pill{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:6px 14px;border-radius:3px;font-size:.82rem;font-weight:600;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(3.4rem,14vw,9rem);font-weight:800;letter-spacing:-.04em;
+  color:var(--text);letter-spacing:0;text-shadow:0 0 44px rgba(217,255,79,.16);padding:0 .1em .06em}
+.hero h1 sup{font-size:.5em}
+.tag{display:inline-block;margin:14px 0 8px;padding:10px 26px;font-family:var(--display);font-weight:800;font-size:clamp(.95rem,2.6vw,1.5rem);letter-spacing:.04em;
+  background:var(--cyan);color:#111310;clip-path:polygon(2% 0,100% 0,98% 100%,0 100%)}
+.motto{color:var(--muted);font-size:1.1rem}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:38px 0 30px;text-align:left}
+.fact{border:1px solid var(--line);border-radius:4px;padding:16px 18px;background:rgba(17,19,16,.72);backdrop-filter:blur(8px)}
+.fact small{color:var(--muted);display:block;font-size:.75rem;font-weight:600;text-transform:uppercase}
+.fact b{font-family:var(--display);font-size:1.3rem}
+.cta-row{display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap}
+#countdown{display:flex;justify-content:flex-start;gap:8px;margin-top:28px;flex-wrap:wrap}
+#countdown div{min-width:76px;border:1px solid var(--line);border-radius:4px;padding:8px 12px;background:rgba(17,19,16,.8)}
+#countdown b{display:block;font-family:var(--display);font-size:2rem}
+#countdown small{color:var(--muted)}
+.cd-note{color:var(--muted);margin-top:10px;font-size:.9rem}
+
+/* details */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:4px;padding:24px;background:rgba(25,28,23,.88);transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.card h3{font-size:1.25rem;margin-bottom:8px}
+.card p,.card li{color:var(--muted)}
+.card ul{padding-left:18px}
+.prize{font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--cyan)}
+.card h3{display:flex;align-items:baseline;gap:10px}
+.card h3::before{counter-increment:info-card;content:counter(info-card,decimal-leading-zero);color:var(--cyan);font:600 .72rem var(--body)}
+#details .grid{counter-reset:info-card}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:34px;border-top:1px solid var(--line)}
+.milestone{position:relative;padding:20px 18px 4px 0}
+.milestone::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--cyan);border:2px solid var(--bg);border-radius:50%;box-shadow:0 0 0 1px var(--cyan)}
+.milestone small{display:block;color:var(--cyan);font-size:.76rem;font-weight:700;text-transform:uppercase}
+.milestone b{display:block;margin:5px 0;font-family:var(--display);font-size:1.05rem}
+.milestone span{color:var(--muted);font-size:.9rem}
+.scores{display:grid;gap:13px;margin-top:10px}
+.score-label{display:flex;justify-content:space-between;gap:12px;font-size:.9rem}
+.score-label strong{color:var(--text);font-family:var(--display)}
+.score-bar{height:5px;margin-top:5px;background:#34382e}
+.score-bar i{display:block;width:var(--score);height:100%;background:var(--cyan)}
+
+/* committee */
+.row{display:grid;gap:16px;margin-bottom:16px}
+.row.r4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.row.r3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.person{border-left:2px solid var(--violet);padding:6px 0 6px 16px}
+.person b{display:block;font-family:var(--display);font-size:1.1rem}
+.person span{color:var(--muted);font-size:.95rem}
+.coord-head{margin:34px 0 14px;font-family:var(--display);font-size:1.15rem;color:var(--cyan)}
+.contact a{text-decoration:none}
+
+/* form */
+form{border:1px solid var(--line);border-radius:4px;padding:clamp(18px,4vw,34px);background:rgba(25,28,23,.96)}
+fieldset{border:1px solid var(--line);border-radius:4px;padding:22px;margin:0 0 22px}
+legend{padding:0 10px;font-family:var(--display);font-size:1.1rem;color:var(--cyan)}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+label{display:block;font-size:.9rem;color:var(--muted);font-weight:500}
+input[type=text],input[type=email],input[type=tel]{width:100%;margin-top:6px;padding:13px;border-radius:3px;border:1px solid var(--line);background:#111310;color:var(--text);font:inherit;transition:border-color .18s,box-shadow .18s}
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(217,255,79,.1);outline:0}
+input::placeholder{color:#5f6fa8}
+input.bad{border-color:var(--danger)}
+.drop{display:block;border:1px dashed var(--line);border-radius:4px;padding:26px;text-align:center;cursor:pointer;color:var(--muted)}
+.drop:hover,.drop.over{border-color:var(--cyan);color:var(--text)}
+.drop input{display:none}
+.drop b{display:block;color:var(--text);margin-bottom:4px}
+#fileName{margin-top:8px;color:var(--ok);font-weight:600;word-break:break-all}
+.hint{font-size:.85rem;color:var(--muted);margin-top:8px}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:6px;color:var(--text)}
+.check input{margin-top:5px;accent-color:var(--violet)}
+#msg{margin:14px 0 0;min-height:1.4em;font-weight:600}
+#msg.err{color:var(--danger)} #msg.ok{color:var(--ok)}
+.hp{position:absolute;left:-9999px}
+
+/* modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,5,20,.85);z-index:50;padding:20px}
+.modal.open{display:flex}
+.modal .box{max-width:460px;width:100%;text-align:center;border:1px solid var(--violet);border-radius:4px;background:var(--bg2);padding:38px 28px;animation:pop .35s ease-out}
+.modal .tick{width:70px;height:70px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-size:2.2rem;background:linear-gradient(135deg,var(--blue),var(--violet))}
+.modal h3{font-size:2rem;margin-bottom:10px}
+.modal p{color:var(--muted);margin-bottom:22px}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+
+footer{border-top:1px solid rgba(217,255,79,.22);padding:34px 0;color:var(--muted);text-align:center;font-size:.92rem}
+footer b{color:var(--text)}
+@media (min-width:761px){.hero{text-align:left}.hero .logos{margin-bottom:54px}.hero h1{font-size:clamp(5.5rem,10vw,9rem)}.hero .facts{max-width:900px}.hero .cta-row,#countdown{justify-content:flex-start}}
+@media (max-width:760px){nav ul{display:none}.logos{grid-template-columns:1fr;justify-items:center;gap:10px;text-align:center;margin-bottom:22px}.hero{padding-top:34px;text-align:center}.hero::before{background-position:58% center}.hero .logos{margin-bottom:22px}.hero h1{margin-left:0}.hero .tag{margin-left:auto;margin-right:auto}.hero .motto{margin-left:auto;margin-right:auto}.logos .inst{width:100%}.logos .inst[style]{text-align:center!important}.facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0}.fact{padding:12px}.fact b{font-size:1.05rem}.cta-row,#countdown{justify-content:center}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.milestone{padding-right:12px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Sankalp<span>’26</span></a>
+    <ul>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#committee">Organisers</a></li>
+      <li><a href="#submit">Submit idea</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#submit" style="padding:9px 18px">Submit idea</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="logos">
+      <div class="inst">
+        <b>AJ Institute of Engineering and Technology</b>
+        <small>NH-66, Kottara Chowki, Mangaluru – 575006, Karnataka</small>
+      </div>
+      <div class="inst" style="text-align:right">
+        <b>IEEE Student Branch</b>
+        <small>Department of Electronics and Communication Engineering, AJIET</small>
+      </div>
+    </div>
+    <span class="pill">Idea submissions close · 25 October 2026</span>
+    <h1>Sankalp<sup>’26</sup></h1>
+    <div class="tag">National Level 24 Hours Hackathon</div>
+    <p class="motto">A 24-hour build sprint for ideas with the power to make a real-world impact.</p>
+
+    <div class="facts">
+      <div class="fact"><small>Event dates</small><b>7–8 November 2026</b></div>
+      <div class="fact"><small>Idea deadline</small><b>25 October · 11:59 PM</b></div>
+      <div class="fact"><small>Prize pool</small><b>₹50,000</b></div>
+      <div class="fact"><small>Team size</small><b>Up to 4 members</b></div>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="#submit">Submit your idea</a>
+      <a class="btn ghost" href="#details">See details</a>
+    </div>
+
+    <div id="countdown" aria-live="off">
+      <div><b id="cd-d">--</b><small>days</small></div>
+      <div><b id="cd-h">--</b><small>hours</small></div>
+      <div><b id="cd-m">--</b><small>minutes</small></div>
+      <div><b id="cd-s">--</b><small>seconds</small></div>
+    </div>
+    <p class="cd-note" id="cd-note">Until the hackathon starts</p>
+  </div>
+</header>
+
+<section id="details">
+  <div class="wrap">
+    <h2>Everything you need to know</h2>
+    <p class="lead">Sankalp’26 is organised by the IEEE Student Branch and the Department of Electronics and Communication Engineering at AJIET, with support from IEEE Mangalore Subsection. Submit your idea by 25 October at 11:59 PM. The top 20 teams will be announced on 30 October and notified.</p>
+    <div class="grid">
+      <div class="card"><h3>Who can participate</h3><p>Open to all B.E. / B.Tech students from any college in India.</p></div>
+      <div class="card"><h3>Team size</h3><p>Maximum 4 members per team. Every member’s name, USN and email is needed when you submit your idea.</p></div>
+      <div class="card"><h3>Selection and payment</h3><p>The top 20 teams will be announced on 30 October. No payment is required to submit an idea. Selected teams must pay by 2 November via UPI or bank transfer.</p>
+        <ul><li>At least one IEEE member: ₹500 per team</li><li>No IEEE members: ₹600 per team</li><li>Non-refundable after payment confirmation</li></ul></div>
+      <div class="card"><h3>Theme</h3><p>Build around AI, IoT, sustainability, or smart healthcare.</p></div>
+      <div class="card"><h3>Judging criteria</h3><div class="scores">
+        <div><div class="score-label"><span>Innovation</span><strong>30%</strong></div><div class="score-bar"><i style="--score:30%"></i></div></div>
+        <div><div class="score-label"><span>Technical implementation</span><strong>25%</strong></div><div class="score-bar"><i style="--score:25%"></i></div></div>
+        <div><div class="score-label"><span>Impact</span><strong>25%</strong></div><div class="score-bar"><i style="--score:25%"></i></div></div>
+        <div><div class="score-label"><span>Presentation</span><strong>20%</strong></div><div class="score-bar"><i style="--score:20%"></i></div></div>
+      </div></div>
+      <div class="card"><h3>Prize pool</h3><div class="prize">₹50,000</div><p>For the best ideas and builds.</p></div>
+      <div class="card"><h3>Schedule</h3><p>Day 1: registration and development. Day 2: final presentations and awards.</p></div>
+      <div class="card"><h3>Venue</h3><p>To be announced. The hackathon will be hosted by AJIET, Mangaluru.</p></div>
+    </div>
+    <div class="timeline" aria-label="Event milestones">
+      <div class="milestone"><small>25 October</small><b>Idea submission closes</b><span>Submit by 11:59 PM</span></div>
+      <div class="milestone"><small>30 October</small><b>Top 20 announced</b><span>Selected teams are notified</span></div>
+      <div class="milestone"><small>2 November</small><b>Payment deadline</b><span>Selected teams confirm</span></div>
+      <div class="milestone"><small>7–8 November</small><b>Build at Sankalp</b><span>24-hour hackathon</span></div>
+    </div>
+    <p class="hint" style="margin-top:22px">Sponsor: <b>Bravynex Engineering</b> – Powering Innovation Together.</p>
+  </div>
+</section>
+
+<section id="committee">
+  <div class="wrap">
+    <h2>Organising team</h2>
+    <p class="lead">The people behind Sankalp’26.</p>
+
+    <div class="row r4">
+      <div class="person"><b>Dr. Shantharama Rai C</b><span>Dean (R&amp;D)</span></div>
+      <div class="person"><b>Dr. Kiran Kumar V G</b><span>HoD – ECE</span></div>
+      <div class="person"><b>Dr. Ashok Kumar T</b><span>Principal</span></div>
+      <div class="person"><b>Dr. Jayaprakash T</b><span>Campus Director</span></div>
+    </div>
+    <div class="row r3">
+      <div class="person"><b>Prof. Manjukiran</b><span>IEEE Branch Counsellor</span></div>
+      <div class="person"><b>Prof. Rohith Kumar</b><span>Skill Development Office</span></div>
+      <div class="person"><b>Prof. Pratheeksha N Rai</b><span>Coordinator – EVSA</span></div>
+    </div>
+
+    <div class="coord-head">Coordinators – Sankalp’26</div>
+    <div class="row r3">
+      <div class="person"><b>Ms. Pranamya Shetty</b><span>Student Coordinator · <a href="tel:+919632527739">9632527739</a></span></div>
+      <div class="person"><b>Mr. Yashas Shetty</b><span>Student Coordinator · <a href="tel:+919110216295">9110216295</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="submit">
+  <div class="wrap">
+    <h2>Submit your idea</h2>
+    <p class="lead">Submit by 25 October 2026 at 11:59 PM. Upload your idea as a PowerPoint file (.ppt or .pptx, up to 5 MB). The top 20 teams will be announced on 30 October and notified. Only selected teams pay by 2 November via UPI or bank transfer: ₹500 per team with at least one IEEE member, or ₹600 per team with no IEEE members. Payment is non-refundable after confirmation.</p>
+
+    <form id="ideaForm" novalidate>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <fieldset>
+        <legend>Team and college</legend>
+        <div class="fields">
+          <label>Team name
+            <input type="text" name="Team name" id="team" required placeholder="e.g. Code Crusaders"></label>
+          <label>College name
+            <input type="text" name="College" id="college" required placeholder="College you are coming from"></label>
+          <label>Leader’s phone number
+            <input type="tel" name="Leader phone" id="phone" required placeholder="10-digit mobile number" inputmode="numeric"></label>
+        </div>
+        <label class="check"><input type="checkbox" name="IEEE member in team" value="Yes" id="ieee"> At least one member of our team is an IEEE member (fee ₹500 instead of ₹600)</label>
+      </fieldset>
+
+      <div id="members"></div>
+      <p class="hint" style="margin:-8px 0 22px">Member 1 is the team leader. Members 2 to 4 are optional, but if you start a member’s row, fill in all three fields.</p>
+
+      <fieldset>
+        <legend>Idea details</legend>
+        <div class="fields" style="margin-bottom:14px">
+          <label>Idea title
+            <input type="text" name="Idea title" id="title" required placeholder="Name of your idea"></label>
+          <label>Domain / problem statement
+            <input type="text" name="Domain" id="domain" placeholder="e.g. Healthcare, IoT, AI, Sustainability"></label>
+        </div>
+        <label class="drop" id="drop" for="ppt">
+          <b>Upload your idea presentation</b>
+          Click to choose a file, or drag it here (.ppt / .pptx, max 5 MB)
+          <input type="file" id="ppt" name="attachment" accept=".ppt,.pptx,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+        </label>
+        <div id="fileName"></div>
+      </fieldset>
+
+      <button class="btn" type="submit" id="sendBtn">Submit idea</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap">
+    <h2>Questions?</h2>
+    <p class="lead contact">Write to <a href="mailto:hackathon@ajiet.edu.in">hackathon@ajiet.edu.in</a> or call
+      Ms. Pranamya Shetty (<a href="tel:+919632527739">9632527739</a>) or Mr. Yashas Shetty (<a href="tel:+919110216295">9110216295</a>).</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Sankalp’26</b> · AJ Institute of Engineering and Technology, Mangaluru<br>
+    A unit of Laxmi Memorial Education Trust. Approved by AICTE, New Delhi. Affiliated to Visvesvaraya Technological University, Belagavi.
+  </div>
+</footer>
+
+<div class="modal" id="thanks" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
+  <div class="box">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h3 id="thanksTitle">Thank you!</h3>
+    <p>Your idea has been submitted. The Sankalp’26 team will review it and get in touch with your team leader.</p>
+    <button class="btn" id="closeThanks">Done</button>
+  </div>
+</div>
+
+<script>
+/* ================= SETTINGS ================= */
+// All ideas are emailed here. The first submission triggers a one-time
+// activation email from FormSubmit to this address – click "Activate" in it.
+const RECEIVER_EMAIL = "bharathbhat87@gmail.com";
+const ENDPOINT = "https://formsubmit.co/ajax/" + RECEIVER_EMAIL;
+const MAX_MB = 5;
+const START = new Date("2026-11-07T00:00:00+05:30"); // Event day, IST
+
+/* ============== countdown ============== */
+(function(){
+  const d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s'),note=document.getElementById('cd-note');
+  function tick(){
+    let diff=START-new Date();
+    if(diff<=0){[d,h,m,s].forEach(e=>e.textContent='0');note.textContent='Sankalp’26 has begun!';return}
+    const p=n=>String(n).padStart(2,'0');
+    d.textContent=Math.floor(diff/864e5);
+    h.textContent=p(Math.floor(diff/36e5)%24);
+    m.textContent=p(Math.floor(diff/6e4)%60);
+    s.textContent=p(Math.floor(diff/1e3)%60);
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* ============== member rows ============== */
+const membersBox=document.getElementById('members');
+for(let i=1;i<=4;i++){
+  membersBox.insertAdjacentHTML('beforeend',`
+  <fieldset data-member="${i}">
+    <legend>Member ${i}${i===1?' (team leader)':''}</legend>
+    <div class="fields">
+      <label>Full name <input type="text" name="Member ${i} name" placeholder="Name" ${i===1?'required':''}></label>
+      <label>USN <input type="text" name="Member ${i} USN" placeholder="e.g. 4AJ22CS001" style="text-transform:uppercase" ${i===1?'required':''}></label>
+      <label>Email <input type="email" name="Member ${i} email" placeholder="name@example.com" ${i===1?'required':''}></label>
+    </div>
+  </fieldset>`);
+}
+
+/* ============== file handling ============== */
+const form=document.getElementById('ideaForm'),fileInput=document.getElementById('ppt'),
+      fileName=document.getElementById('fileName'),drop=document.getElementById('drop'),msg=document.getElementById('msg');
+const okExt=/\.(pptx?|PPTX?)$/;
+
+function showFile(){
+  const f=fileInput.files[0];
+  fileName.textContent=f?`Selected: ${f.name} (${(f.size/1048576).toFixed(2)} MB)`:'';
+}
+fileInput.addEventListener('change',showFile);
+['dragenter','dragover'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop',ev=>{
+  if(ev.dataTransfer.files.length){fileInput.files=ev.dataTransfer.files;showFile()}
+});
+
+/* ============== validation ============== */
+function setMsg(t,cls){msg.textContent=t;msg.className=cls||''}
+function validate(){
+  form.querySelectorAll('.bad').forEach(e=>e.classList.remove('bad'));
+  const bad=[];
+  const flag=el=>{el.classList.add('bad');bad.push(el)};
+  ['team','college','phone','title'].forEach(id=>{const el=document.getElementById(id);if(!el.value.trim())flag(el)});
+  const phone=document.getElementById('phone');
+  if(phone.value.trim()&&!/^[6-9]\d{9}$/.test(phone.value.replace(/\D/g,'').slice(-10)))flag(phone);
+
+  const emails=new Set(), usns=new Set();
+  let count=0;
+  form.querySelectorAll('[data-member]').forEach(fs=>{
+    const inputs=[...fs.querySelectorAll('input')],
+          filled=inputs.filter(i=>i.value.trim()),
+          required=fs.dataset.member==='1';
+    if(!filled.length&&!required)return;
+    count++;
+    inputs.forEach(i=>{if(!i.value.trim())flag(i)});
+    const [n,u,e]=inputs;
+    if(u.value.trim()&&!/^[A-Za-z0-9]{8,12}$/.test(u.value.trim()))flag(u);
+    if(e.value.trim()){
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e.value.trim()))flag(e);
+      const k=e.value.trim().toLowerCase(); if(emails.has(k))flag(e); emails.add(k);
+    }
+    if(u.value.trim()){const k=u.value.trim().toUpperCase(); if(usns.has(k))flag(u); usns.add(k)}
+  });
+
+  const f=fileInput.files[0];
+  if(!f){drop.style.borderColor='var(--danger)';setMsg('Please upload your idea as a PowerPoint (.ppt or .pptx) file.','err');return false}
+  drop.style.borderColor='';
+  if(!okExt.test(f.name)){setMsg('Only PowerPoint files (.ppt or .pptx) are accepted.','err');return false}
+  if(f.size>MAX_MB*1048576){setMsg(`Your file is larger than ${MAX_MB} MB. Compress the images in your presentation and upload it again.`,'err');return false}
+  if(bad.length){
+    setMsg('Please fix the highlighted fields. Each USN needs 8 to 12 letters or digits, and each email and USN must be unique.','err');
+    bad[0].focus();return false;
+  }
+  return true;
+}
+
+/* ============== submit ============== */
+form.addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  setMsg('');
+  if(!validate())return;
+
+  const btn=document.getElementById('sendBtn');
+  btn.disabled=true;btn.textContent='Sending…';setMsg('Uploading your idea. Please keep this page open.');
+
+  const fd=new FormData(form);
+  // uppercase USNs
+  for(const [k,v] of [...fd.entries()]) if(/USN$/.test(k)) fd.set(k,String(v).toUpperCase());
+  fd.set('_subject',`Sankalp’26 idea: ${document.getElementById('title').value.trim()} – ${document.getElementById('team').value.trim()}`);
+  fd.set('_template','table');
+  fd.set('_captcha','false');
+  // Auto-reply is sent to the team leader
+  fd.set('_replyto',form.querySelector('[name="Member 1 email"]').value.trim());
+  fd.set('email',form.querySelector('[name="Member 1 email"]').value.trim());
+  fd.delete('Member 1 email_dup');
+
+  try{
+    const res=await fetch(ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+    const data=await res.json().catch(()=>({}));
+    if(res.ok && String(data.success)!=='false'){
+      setMsg('');form.reset();showFile();
+      document.getElementById('thanks').classList.add('open');
+      document.getElementById('closeThanks').focus();
+    }else{
+      throw new Error(data.message||'Server error');
+    }
+  }catch(err){
+    setMsg('Your idea could not be sent. Check your internet connection and try again, or email it to hackathon@ajiet.edu.in.','err');
+    console.error(err);
+  }finally{
+    btn.disabled=false;btn.textContent='Submit idea';
+  }
+});
+document.getElementById('closeThanks').addEventListener('click',()=>document.getElementById('thanks').classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('thanks').classList.remove('open')});
+</script>
+</body>
+</html>
