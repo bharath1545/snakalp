@@ -548,6 +548,16 @@ const pageAliases={top:'home',details:'about',committee:'organisers',submit:'reg
 const pageLinks=[...document.querySelectorAll('nav a[href^="#"]')];
 const aboutMenu=document.getElementById('aboutMenu');
 const aboutButton=aboutMenu.querySelector('button');
+const viewGroups={
+  home:['home'],
+  about:['about','organisers','guidelines'],
+  organisers:['organisers'],
+  registration:['registration'],
+  dates:['dates'],
+  schedule:['schedule'],
+  guidelines:['guidelines'],
+  thanks:['thanks']
+};
 
 let navigationSequence=0;
 let currentView='';
@@ -573,10 +583,11 @@ function showPage(animate=false){
   const view=pageAliases[requested]||requested;
   const available=[...new Set([...document.querySelectorAll('[data-view]')].map(el=>el.dataset.view))];
   const activeView=available.includes(view)?view:'home';
+  const activeGroup=viewGroups[activeView]||[activeView];
   const sequence=++navigationSequence;
   const views=[...document.querySelectorAll('[data-view]')];
-  const outgoing=views.filter(el=>!el.hidden&&el.dataset.view!==activeView);
-  const incoming=views.filter(el=>el.hidden&&el.dataset.view===activeView);
+  const outgoing=views.filter(el=>!el.hidden&&!activeGroup.includes(el.dataset.view));
+  const incoming=views.filter(el=>el.hidden&&activeGroup.includes(el.dataset.view));
 
   async function turnPages(){
     const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -588,8 +599,9 @@ function showPage(animate=false){
       if(sequence!==navigationSequence)return;
     }
 
-    outgoing.forEach(el=>{el.hidden=true});
-    incoming.forEach(el=>{el.hidden=false});
+    views.forEach(el=>{
+      el.hidden=!activeGroup.includes(el.dataset.view);
+    });
     if(animate&&!reducedMotion){
       await playPageTurn(incoming,
         [{transform:'perspective(1500px) rotateY(82deg)',opacity:.25,filter:'brightness(.55)'},{transform:'perspective(1500px) rotateY(0deg)',opacity:1,filter:'brightness(1)'}],
@@ -599,8 +611,6 @@ function showPage(animate=false){
     incoming.forEach(el=>el.getAnimations().forEach(animation=>animation.cancel()));
     currentView=activeView;
     document.body.classList.remove('page-turning');
-    window.scrollTo(0,0);
-    if(requested==='organisers')requestAnimationFrame(()=>document.getElementById('committee').scrollIntoView());
   }
 
   turnPages();
