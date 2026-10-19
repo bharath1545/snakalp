@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sankalp’26 – National Level 24 Hours Hackathon | AJIET Mangaluru</title>
-<meta name="description" content="Sankalp’26: a national level 24 hours hackathon at AJIET, Mangaluru, on 7 and 8 November 2026. Submit your idea by 25 October.">
+<meta name="description" content="Sankalp’26: a 24-hour hackathon at AJIET, Mangaluru, on 27–28 November 2026. Submit your idea by 8 November.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,12 +31,20 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
 
 /* nav */
 nav{position:sticky;top:0;z-index:20;background:rgba(17,19,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(217,255,79,.22)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:20px}
 .brand{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--text);text-decoration:none}
 .brand span{color:var(--cyan)}
-nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
-nav ul a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
-nav ul a:hover{color:var(--text)}
+nav .menu{display:flex;align-items:center;gap:24px;list-style:none;white-space:nowrap}
+nav .menu a,nav .menu button{position:relative;display:inline-flex;align-items:center;gap:6px;padding:23px 0 21px;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);text-decoration:none;font:600 .92rem var(--body);cursor:pointer}
+nav .menu a:hover,nav .menu button:hover,nav .menu a[aria-current="page"],nav .menu button[aria-expanded="true"]{color:var(--text);border-bottom-color:var(--cyan)}
+.nav-dropdown{position:relative}
+.nav-dropdown .dropdown{position:absolute;top:calc(100% - 8px);left:-14px;display:none;min-width:180px;padding:7px;background:var(--bg2);border:1px solid var(--line);box-shadow:0 14px 32px #0008}
+.nav-dropdown.open .dropdown{display:grid}
+.nav-dropdown .dropdown a{padding:10px 12px;border:0}
+.nav-dropdown .dropdown a:hover{background:var(--panel);color:var(--cyan)}
+.view[hidden]{display:none!important}
+.view{transform-style:preserve-3d;backface-visibility:hidden;transform-origin:left center}
+body.page-turning{overflow-x:hidden}
 .btn{display:inline-block;border:0;cursor:pointer;font:700 1rem var(--body);padding:13px 26px;border-radius:4px;color:#111310;text-decoration:none;
   background:var(--cyan);transition:transform .15s,box-shadow .15s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,255,79,.22)}
@@ -53,6 +61,12 @@ nav ul a:hover{color:var(--text)}
 .hero .tag{margin-left:0}
 .hero .motto{max-width:48ch}
 .logos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:20px;text-align:left;margin-bottom:34px}
+.inst{display:flex;align-items:center;gap:14px;min-width:0}
+.inst:last-child{justify-content:flex-end}
+.inst-copy{min-width:0}
+.inst-logo{display:block;flex:none;object-fit:contain;background:#fff}
+.inst-logo.ajiet{width:82px;height:82px;padding:4px}
+.inst-logo.ieee{width:144px;height:82px;object-fit:cover;object-position:center;background:#fff}
 .logos .inst b{display:block;font-family:var(--display);font-size:clamp(1rem,2.4vw,1.5rem)}
 .logos .inst small{color:var(--muted);font-size:.85rem}
 .pill{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:6px 14px;border-radius:3px;font-size:.82rem;font-weight:600;text-transform:uppercase;margin-bottom:18px}
@@ -82,7 +96,7 @@ nav ul a:hover{color:var(--text)}
 .card ul{padding-left:18px}
 .prize{font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--cyan)}
 .card h3{display:flex;align-items:baseline;gap:10px}
-.card h3::before{counter-increment:info-card;content:counter(info-card,decimal-leading-zero);color:var(--cyan);font:600 .72rem var(--body)}
+#details .card h3::before{counter-increment:info-card;content:counter(info-card,decimal-leading-zero);color:var(--cyan);font:600 .72rem var(--body)}
 #details .grid{counter-reset:info-card}
 .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:34px;border-top:1px solid var(--line)}
 .milestone{position:relative;padding:20px 18px 4px 0}
@@ -95,6 +109,19 @@ nav ul a:hover{color:var(--text)}
 .score-label strong{color:var(--text);font-family:var(--display)}
 .score-bar{height:5px;margin-top:5px;background:#34382e}
 .score-bar i{display:block;width:var(--score);height:100%;background:var(--cyan)}
+.schedule-grid{margin-top:34px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.schedule-day{padding:clamp(24px,5vw,46px);min-height:280px}
+.schedule-day>small{color:var(--cyan);font-size:.78rem;font-weight:700}
+.schedule-day h3{margin:18px 0 22px;font-size:clamp(1.5rem,3vw,2.2rem)}
+.schedule-day ol{padding-left:22px;color:var(--muted)}
+.schedule-day li{padding:5px 0 5px 5px}
+.thank-you{min-height:calc(100vh - 68px);display:grid;align-items:center;text-align:center}
+.thank-you-inner{max-width:720px;padding-top:50px;padding-bottom:70px}
+.thank-check{display:grid;place-items:center;width:66px;height:66px;margin:0 auto 25px;border:1px solid var(--cyan);border-radius:50%;color:var(--cyan);font-size:2rem}
+.thank-you h1{margin:6px 0 20px;font-size:clamp(3.6rem,11vw,7rem)}
+.thank-you h1 span{color:var(--cyan)}
+.thank-you .lead{margin:0 auto 16px}
+body.is-thanks nav .menu-clip{display:none}
 
 /* committee */
 .row{display:grid;gap:16px;margin-bottom:16px}
@@ -140,7 +167,7 @@ input.bad{border-color:var(--danger)}
 footer{border-top:1px solid rgba(217,255,79,.22);padding:34px 0;color:var(--muted);text-align:center;font-size:.92rem}
 footer b{color:var(--text)}
 @media (min-width:761px){.hero{text-align:left}.hero .logos{margin-bottom:54px}.hero h1{font-size:clamp(5.5rem,10vw,9rem)}.hero .facts{max-width:900px}.hero .cta-row,#countdown{justify-content:flex-start}}
-@media (max-width:760px){nav ul{display:none}.logos{grid-template-columns:1fr;justify-items:center;gap:10px;text-align:center;margin-bottom:22px}.hero{padding-top:34px;text-align:center}.hero::before{background-position:58% center}.hero .logos{margin-bottom:22px}.hero h1{margin-left:0}.hero .tag{margin-left:auto;margin-right:auto}.hero .motto{margin-left:auto;margin-right:auto}.logos .inst{width:100%}.logos .inst[style]{text-align:center!important}.facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0}.fact{padding:12px}.fact b{font-size:1.05rem}.cta-row,#countdown{justify-content:center}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.milestone{padding-right:12px}}
+@media (max-width:760px){nav .wrap{min-height:0;display:block;padding-top:10px}.brand{display:block;width:max-content;margin:0 auto 4px}.menu-clip{overflow-x:auto;scrollbar-width:none}.menu-clip::-webkit-scrollbar{display:none}nav .menu{width:max-content;min-width:100%;justify-content:center;gap:9px}nav .menu a,nav .menu button{padding:12px 0 10px;font-size:.75rem}.nav-dropdown .dropdown{top:100%;left:-10px}.logos{grid-template-columns:1fr;justify-items:stretch;gap:12px;text-align:left;margin-bottom:22px}.hero{padding-top:34px;text-align:center}.hero::before{background-position:58% center}.hero .logos{margin-bottom:22px}.hero h1{margin-left:0}.hero .tag{margin-left:auto;margin-right:auto}.hero .motto{margin-left:auto;margin-right:auto}.logos .inst{width:100%;justify-content:flex-start}.logos .inst:last-child{justify-content:flex-start;flex-direction:row-reverse;text-align:left!important}.inst-logo.ajiet{width:70px;height:70px}.inst-logo.ieee{width:120px;height:68px}.logos .inst b{font-size:1rem}.logos .inst small{font-size:.76rem}.facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:24px 0}.fact{padding:12px}.fact b{font-size:1.05rem}.cta-row,#countdown{justify-content:center}.timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}.milestone{padding-right:12px}.schedule-grid{grid-template-columns:1fr}.schedule-day{min-height:0}.thank-you{min-height:calc(100vh - 100px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -148,43 +175,58 @@ footer b{color:var(--text)}
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Sankalp<span>’26</span></a>
-    <ul>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#committee">Organisers</a></li>
-      <li><a href="#submit">Submit idea</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a class="btn" href="#submit" style="padding:9px 18px">Submit idea</a>
+    <a class="brand" href="#home">Sankalp<span>’26</span></a>
+    <div class="menu-clip">
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li class="nav-dropdown" id="aboutMenu">
+          <button type="button" aria-expanded="false">About <span aria-hidden="true">⌄</span></button>
+          <div class="dropdown">
+            <a href="#about">Event overview</a>
+            <a href="#organisers">Organising team</a>
+            <a href="#guidelines">Rules &amp; facilities</a>
+          </div>
+        </li>
+        <li><a href="#registration">Registration</a></li>
+        <li><a href="#dates">Important Dates</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero view" id="home" data-view="home">
   <div class="wrap">
     <div class="logos">
       <div class="inst">
-        <b>AJ Institute of Engineering and Technology</b>
-        <small>NH-66, Kottara Chowki, Mangaluru – 575006, Karnataka</small>
+        <img class="inst-logo ajiet" src="aj.jpeg" alt="AJIET logo">
+        <div class="inst-copy">
+          <b>AJ Institute of Engineering and Technology</b>
+          <small>NH-66, Kottara Chowki, Mangaluru – 575006, Karnataka</small>
+        </div>
       </div>
       <div class="inst" style="text-align:right">
-        <b>IEEE Student Branch</b>
-        <small>Department of Electronics and Communication Engineering, AJIET</small>
+        <img class="inst-logo ieee" src="iee.png" alt="IEEE Student Branch, AJ Institute of Engineering and Technology">
+        <div class="inst-copy">
+          <b>IEEE Student Branch</b>
+          <small>In association with the Department of Electronics and Communication Engineering, AJIET</small>
+        </div>
       </div>
     </div>
-    <span class="pill">Idea submissions close · 25 October 2026</span>
+    <span class="pill">Idea submissions close · 8 November 2026</span>
     <h1>Sankalp<sup>’26</sup></h1>
     <div class="tag">National Level 24 Hours Hackathon</div>
     <p class="motto">A 24-hour build sprint for ideas with the power to make a real-world impact.</p>
 
     <div class="facts">
-      <div class="fact"><small>Event dates</small><b>7–8 November 2026</b></div>
-      <div class="fact"><small>Idea deadline</small><b>25 October · 11:59 PM</b></div>
-      <div class="fact"><small>Prize pool</small><b>₹50,000</b></div>
-      <div class="fact"><small>Team size</small><b>Up to 4 members</b></div>
+      <div class="fact"><small>Event dates</small><b>27–28 November 2026</b></div>
+      <div class="fact"><small>Idea deadline</small><b>8 November 2026</b></div>
+      <div class="fact"><small>Prize pool</small><b>₹60,000</b></div>
+      <div class="fact"><small>Team size</small><b>Exactly 4 members</b></div>
     </div>
     <div class="cta-row">
-      <a class="btn" href="#submit">Submit your idea</a>
-      <a class="btn ghost" href="#details">See details</a>
+      <a class="btn" href="#registration">Submit your idea</a>
+      <a class="btn ghost" href="#about">About the event</a>
     </div>
 
     <div id="countdown" aria-live="off">
@@ -197,37 +239,31 @@ footer b{color:var(--text)}
   </div>
 </header>
 
-<section id="details">
+<section id="details" class="view" data-view="about">
   <div class="wrap">
     <h2>Everything you need to know</h2>
-    <p class="lead">Sankalp’26 is organised by the IEEE Student Branch and the Department of Electronics and Communication Engineering at AJIET, with support from IEEE Mangalore Subsection. Submit your idea by 25 October at 11:59 PM. The top 20 teams will be announced on 30 October and notified.</p>
+    <p class="lead">Sankalp’26 is organised by the IEEE Student Branch, AJIET, in association with the Department of Electronics and Communication Engineering, AJIET, with support from IEEE Mangalore Subsection. Submit your idea by 8 November 2026. Selected teams will be announced on 20 November.</p>
     <div class="grid">
       <div class="card"><h3>Who can participate</h3><p>Open to all B.E. / B.Tech students from any college in India.</p></div>
-      <div class="card"><h3>Team size</h3><p>Maximum 4 members per team. Every member’s name, USN and email is needed when you submit your idea.</p></div>
-      <div class="card"><h3>Selection and payment</h3><p>The top 20 teams will be announced on 30 October. No payment is required to submit an idea. Selected teams must pay by 2 November via UPI or bank transfer.</p>
-        <ul><li>At least one IEEE member: ₹500 per team</li><li>No IEEE members: ₹600 per team</li><li>Non-refundable after payment confirmation</li></ul></div>
-      <div class="card"><h3>Theme</h3><p>Build around AI, IoT, sustainability, or smart healthcare.</p></div>
+      <div class="card"><h3>Team size</h3><p>Every team must have exactly 4 registered members. Enter all four members’ names, USNs and email addresses in the idea form.</p></div>
+      <div class="card"><h3>Selection and payment</h3><p>All submitted ideas will be evaluated. Selected teams will be announced on 20 November and invited to complete final registration and payment through the official registration form. Payment deadline will be announced with the results.</p>
+        <ul><li>At least one IEEE member: ₹500 per team</li><li>No IEEE members: ₹700 per team</li><li>Non-refundable once selected and registration is completed</li></ul></div>
+      <div class="card"><h3>Problem domains</h3><p>AI and machine learning, healthcare, smart cities and sustainability, education and accessibility, IoT and embedded systems, or open innovation.</p><p>The final theme and any track restrictions will be announced by the committee.</p></div>
       <div class="card"><h3>Judging criteria</h3><div class="scores">
-        <div><div class="score-label"><span>Innovation</span><strong>30%</strong></div><div class="score-bar"><i style="--score:30%"></i></div></div>
+        <div><div class="score-label"><span>Innovation and originality</span><strong>25%</strong></div><div class="score-bar"><i style="--score:25%"></i></div></div>
         <div><div class="score-label"><span>Technical implementation</span><strong>25%</strong></div><div class="score-bar"><i style="--score:25%"></i></div></div>
-        <div><div class="score-label"><span>Impact</span><strong>25%</strong></div><div class="score-bar"><i style="--score:25%"></i></div></div>
-        <div><div class="score-label"><span>Presentation</span><strong>20%</strong></div><div class="score-bar"><i style="--score:20%"></i></div></div>
+        <div><div class="score-label"><span>Problem relevance and impact</span><strong>20%</strong></div><div class="score-bar"><i style="--score:20%"></i></div></div>
+        <div><div class="score-label"><span>Functionality and prototype</span><strong>20%</strong></div><div class="score-bar"><i style="--score:20%"></i></div></div>
+        <div><div class="score-label"><span>Presentation and teamwork</span><strong>10%</strong></div><div class="score-bar"><i style="--score:10%"></i></div></div>
       </div></div>
-      <div class="card"><h3>Prize pool</h3><div class="prize">₹50,000</div><p>For the best ideas and builds.</p></div>
-      <div class="card"><h3>Schedule</h3><p>Day 1: registration and development. Day 2: final presentations and awards.</p></div>
-      <div class="card"><h3>Venue</h3><p>To be announced. The hackathon will be hosted by AJIET, Mangaluru.</p></div>
-    </div>
-    <div class="timeline" aria-label="Event milestones">
-      <div class="milestone"><small>25 October</small><b>Idea submission closes</b><span>Submit by 11:59 PM</span></div>
-      <div class="milestone"><small>30 October</small><b>Top 20 announced</b><span>Selected teams are notified</span></div>
-      <div class="milestone"><small>2 November</small><b>Payment deadline</b><span>Selected teams confirm</span></div>
-      <div class="milestone"><small>7–8 November</small><b>Build at Sankalp</b><span>24-hour hackathon</span></div>
+      <div class="card"><h3>Prize pool</h3><div class="prize">₹60,000</div><p>For the best ideas and builds.</p></div>
+      <div class="card"><h3>Venue</h3><p>Main event: CAD Lab. Inauguration: Seminar Hall 1.</p></div>
     </div>
     <p class="hint" style="margin-top:22px">Sponsor: <b>Bravynex Engineering</b> – Powering Innovation Together.</p>
   </div>
 </section>
 
-<section id="committee">
+<section id="committee" class="view" data-view="organisers">
   <div class="wrap">
     <h2>Organising team</h2>
     <p class="lead">The people behind Sankalp’26.</p>
@@ -252,10 +288,10 @@ footer b{color:var(--text)}
   </div>
 </section>
 
-<section id="submit">
+<section id="submit" class="view" data-view="registration">
   <div class="wrap">
     <h2>Submit your idea</h2>
-    <p class="lead">Submit by 25 October 2026 at 11:59 PM. Upload your idea as a PowerPoint file (.ppt or .pptx, up to 5 MB). The top 20 teams will be announced on 30 October and notified. Only selected teams pay by 2 November via UPI or bank transfer: ₹500 per team with at least one IEEE member, or ₹600 per team with no IEEE members. Payment is non-refundable after confirmation.</p>
+    <p class="lead">Submit your idea by 8 November 2026. All ideas will be evaluated, and selected teams will be announced on 20 November. Idea submission is free. Only selected teams can proceed to final registration and payment through the official registration form; the payment deadline will be announced with the results.</p>
 
     <form id="ideaForm" novalidate>
       <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -270,11 +306,11 @@ footer b{color:var(--text)}
           <label>Leader’s phone number
             <input type="tel" name="Leader phone" id="phone" required placeholder="10-digit mobile number" inputmode="numeric"></label>
         </div>
-        <label class="check"><input type="checkbox" name="IEEE member in team" value="Yes" id="ieee"> At least one member of our team is an IEEE member (fee ₹500 instead of ₹600)</label>
+        <label class="check"><input type="checkbox" name="IEEE member in team" value="Yes" id="ieee"> At least one member of our team is an IEEE member (₹500 per team; otherwise ₹700)</label>
       </fieldset>
 
       <div id="members"></div>
-      <p class="hint" style="margin:-8px 0 22px">Member 1 is the team leader. Members 2 to 4 are optional, but if you start a member’s row, fill in all three fields.</p>
+      <p class="hint" style="margin:-8px 0 22px">All four member records are required. Member 1 is the team leader.</p>
 
       <fieldset>
         <legend>Idea details</legend>
@@ -298,11 +334,78 @@ footer b{color:var(--text)}
   </div>
 </section>
 
-<section id="contact" style="padding-top:20px">
+<section id="contact" class="view" data-view="organisers" style="padding-top:20px">
   <div class="wrap">
     <h2>Questions?</h2>
-    <p class="lead contact">Write to <a href="mailto:hackathon@ajiet.edu.in">hackathon@ajiet.edu.in</a> or call
+    <p class="lead contact">Write to <a href="mailto:pranamyashetty417@gmail.com">pranamyashetty417@gmail.com</a> or call
       Ms. Pranamya Shetty (<a href="tel:+919632527739">9632527739</a>) or Mr. Yashas Shetty (<a href="tel:+919110216295">9110216295</a>).</p>
+  </div>
+</section>
+
+<section id="dates" class="view" data-view="dates" hidden>
+  <div class="wrap">
+    <span class="pill">Sankalp’26 · Key milestones</span>
+    <h2>Important dates</h2>
+    <p class="lead">Keep these deadlines close. Payment deadline and registration instructions will be announced with the selection results.</p>
+    <div class="timeline" aria-label="Event milestones">
+      <div class="milestone"><small>8 November 2026</small><b>Idea submission closes</b><span>Submit through the idea form</span></div>
+      <div class="milestone"><small>20 November 2026</small><b>Selected teams announced</b><span>All submitted ideas are evaluated</span></div>
+      <div class="milestone"><small>After selection</small><b>Final registration</b><span>Deadline shared with results</span></div>
+      <div class="milestone"><small>27–28 November 2026</small><b>Sankalp’26</b><span>24-hour hackathon at AJIET</span></div>
+    </div>
+    <a class="btn" href="#registration" style="margin-top:32px">Go to registration</a>
+  </div>
+</section>
+
+<section id="schedule" class="view" data-view="schedule" hidden>
+  <div class="wrap">
+    <span class="pill">27–28 November 2026 · AJIET</span>
+    <h2>Event schedule</h2>
+    <p class="lead">The 24-hour hackathon begins at 10:30 AM on 27 November and concludes at 10:00 AM on 28 November. Final project submission, judging slots, and closing timings will be announced by the organisers.</p>
+    <div class="grid schedule-grid">
+      <article class="card schedule-day"><small>DAY 01 · 27 NOVEMBER</small><h3>Arrive. Connect. Build.</h3><ol><li>9:30 AM: inauguration at Seminar Hall 1</li><li>10:30 AM: hackathon begins at CAD Lab</li><li>Mentoring and progress reviews: time to be announced</li><li>1:30 PM: lunch</li><li>Overnight development and mentor support, subject to event arrangements</li></ol></article>
+      <article class="card schedule-day"><small>DAY 02 · 28 NOVEMBER</small><h3>Demo. Celebrate.</h3><ol><li>10:00 AM: hackathon concludes</li><li>Final project submission: time to be announced</li><li>Project demos, judging, awards and closing: timings to be announced</li></ol></article>
+    </div>
+    <p class="hint" style="margin-top:20px">Main event venue: CAD Lab. Inauguration venue: Seminar Hall 1. Organisers will announce detailed timings and any schedule updates through official channels.</p>
+  </div>
+</section>
+
+<section id="guidelines" class="view" data-view="guidelines" hidden>
+  <div class="wrap">
+    <span class="pill">Participant information</span>
+    <h2>Rules &amp; facilities</h2>
+    <p class="lead">Please read these guidelines before submitting. Updates to rules and event arrangements will be shared through official channels.</p>
+    <div class="grid">
+      <article class="card"><h3>Event rules</h3><ol>
+        <li>Each team must have exactly four registered members.</li>
+        <li>Only selected teams that complete registration and payment may participate.</li>
+        <li>Teams must work on the idea submitted. Major changes require prior organiser approval.</li>
+        <li>Projects must be developed or substantially improved during the 24-hour hackathon.</li>
+        <li>Open-source libraries, frameworks, development tools, and AI tools are permitted. Acknowledge external code, datasets, APIs, and other resources.</li>
+        <li>Plagiarism and presenting copied projects as original work are prohibited.</li>
+        <li>Respect intellectual property rights, applicable laws, and the event code of conduct.</li>
+        <li>Submit the final project, source code or repository link, and presentation before the announced deadline.</li>
+        <li>Judges’ decisions are final, subject to the published event rules.</li>
+        <li>Follow organiser instructions and maintain discipline throughout the event.</li>
+      </ol></article>
+      <article class="card"><h3>Evaluation guidelines</h3><ul>
+        <li><b>Innovation and originality:</b> uniqueness of the idea and creativity of the proposed solution.</li>
+        <li><b>Technical implementation:</b> technical complexity, implementation quality, and effective use of technology.</li>
+        <li><b>Problem relevance and impact:</b> significance of the problem and potential real-world impact.</li>
+        <li><b>Functionality and prototype:</b> working demonstration, usability, and completeness.</li>
+        <li><b>Presentation and teamwork:</b> clarity, demonstration, and explanation of the solution.</li>
+      </ul></article>
+      <article class="card"><h3>Participant facilities</h3><p>Availability will be confirmed by the organisers before the event.</p><ul>
+        <li>Dedicated workspace for registered teams</li><li>Internet and Wi-Fi</li><li>Power and charging facilities</li><li>Mentorship and technical assistance</li><li>Food, refreshments, and drinking water</li><li>First-aid and emergency assistance</li>
+      </ul></article>
+      <article class="card"><h3>What to bring</h3><ul><li>Personal laptop and charger</li><li>Valid identification</li><li>Specialized hardware or equipment needed for your project</li></ul><p>Check official announcements for facility confirmations and event updates.</p></article>
+    </div>
+    <h2 style="margin-top:48px">Official resources</h2>
+    <div class="grid">
+      <article class="card"><h3>Idea submission</h3><p>Use the idea submission form on the Registration page by 8 November 2026.</p><a href="#registration">Open idea submission form</a></article>
+      <article class="card"><h3>Final registration and payment</h3><p>The official registration and payment form will be shared with selected teams after the 20 November announcement. Its deadline will be announced with the results.</p></article>
+      <article class="card"><h3>Venues</h3><p>Main event: CAD Lab. Inauguration: Seminar Hall 1.</p></article>
+    </div>
   </div>
 </section>
 
@@ -313,23 +416,119 @@ footer b{color:var(--text)}
   </div>
 </footer>
 
-<div class="modal" id="thanks" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
-  <div class="box">
-    <div class="tick" aria-hidden="true">✓</div>
-    <h3 id="thanksTitle">Thank you!</h3>
-    <p>Your idea has been submitted. The Sankalp’26 team will review it and get in touch with your team leader.</p>
-    <button class="btn" id="closeThanks">Done</button>
+<main id="thank-you" class="view thank-you" data-view="thanks" hidden>
+  <div class="wrap thank-you-inner">
+    <span class="thank-check" aria-hidden="true">✓</span>
+    <p class="pill">SUBMISSION RECEIVED</p>
+    <h1>Thank you<span>.</span></h1>
+    <p class="lead">Your idea has been submitted to the Sankalp’26 team. Selected teams will be announced on 20 November 2026 and notified using the contact details provided.</p>
+    <p class="hint">This confirmation means your idea was received; it does not mean your team has been selected.</p>
+    <a class="btn" href="#home" style="margin-top:26px">Back to home</a>
   </div>
-</div>
+</main>
 
 <script>
 /* ================= SETTINGS ================= */
 // All ideas are emailed here. The first submission triggers a one-time
 // activation email from FormSubmit to this address – click "Activate" in it.
-const RECEIVER_EMAIL = "bharathbhat87@gmail.com";
+const RECEIVER_EMAIL = "hackathon@ajiet.edu.in";
 const ENDPOINT = "https://formsubmit.co/ajax/" + RECEIVER_EMAIL;
 const MAX_MB = 5;
-const START = new Date("2026-11-07T00:00:00+05:30"); // Event day, IST
+const START = new Date("2026-11-27T10:30:00+05:30"); // Hackathon opening, IST
+
+/* ============== page navigation ============== */
+const pageAliases={top:'home',details:'about',committee:'organisers',submit:'registration','thank-you':'thanks'};
+const pageLinks=[...document.querySelectorAll('nav a[href^="#"]')];
+const aboutMenu=document.getElementById('aboutMenu');
+const aboutButton=aboutMenu.querySelector('button');
+
+let navigationSequence=0;
+let currentView='';
+
+function playPageTurn(elements,keyframes,duration,easing){
+  const animations=elements.map(el=>el.animate(keyframes,{duration,easing,fill:'forwards'}));
+  return new Promise(resolve=>{
+    let settled=false;
+    const finish=()=>{
+      if(settled)return;
+      settled=true;
+      clearTimeout(fallback);
+      animations.forEach(animation=>animation.cancel());
+      resolve();
+    };
+    const fallback=setTimeout(finish,duration+120);
+    Promise.all(animations.map(animation=>animation.finished.catch(()=>{}))).then(finish);
+  });
+}
+
+function showPage(animate=false){
+  const requested=location.hash.slice(1)||'home';
+  const view=pageAliases[requested]||requested;
+  const available=[...new Set([...document.querySelectorAll('[data-view]')].map(el=>el.dataset.view))];
+  const activeView=available.includes(view)?view:'home';
+  const sequence=++navigationSequence;
+  const views=[...document.querySelectorAll('[data-view]')];
+  const outgoing=views.filter(el=>!el.hidden&&el.dataset.view!==activeView);
+  const incoming=views.filter(el=>el.hidden&&el.dataset.view===activeView);
+
+  async function turnPages(){
+    const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(animate&&!reducedMotion&&outgoing.length){
+      document.body.classList.add('page-turning');
+      await playPageTurn(outgoing,
+        [{transform:'perspective(1500px) rotateY(0deg)',opacity:1,filter:'brightness(1)'},{transform:'perspective(1500px) rotateY(-82deg)',opacity:.25,filter:'brightness(.55)'}],
+        460,'cubic-bezier(.7,0,.3,1)');
+      if(sequence!==navigationSequence)return;
+    }
+
+    outgoing.forEach(el=>{el.hidden=true});
+    incoming.forEach(el=>{el.hidden=false});
+    if(animate&&!reducedMotion){
+      await playPageTurn(incoming,
+        [{transform:'perspective(1500px) rotateY(82deg)',opacity:.25,filter:'brightness(.55)'},{transform:'perspective(1500px) rotateY(0deg)',opacity:1,filter:'brightness(1)'}],
+        520,'cubic-bezier(.2,.7,.25,1)');
+      if(sequence!==navigationSequence)return;
+    }
+    incoming.forEach(el=>el.getAnimations().forEach(animation=>animation.cancel()));
+    currentView=activeView;
+    document.body.classList.remove('page-turning');
+    window.scrollTo(0,0);
+    if(requested==='organisers')requestAnimationFrame(()=>document.getElementById('committee').scrollIntoView());
+  }
+
+  turnPages();
+  document.body.classList.toggle('is-thanks',activeView==='thanks');
+  pageLinks.forEach(link=>{
+    const target=link.getAttribute('href').slice(1);
+    const targetView=pageAliases[target]||target;
+    if(target===requested)link.setAttribute('aria-current','page');
+    else link.removeAttribute('aria-current');
+  });
+  if(activeView==='about'||activeView==='organisers'||activeView==='guidelines')aboutButton.setAttribute('aria-current','page');
+  else aboutButton.removeAttribute('aria-current');
+  aboutMenu.classList.remove('open');
+  aboutButton.setAttribute('aria-expanded','false');
+}
+
+if(!location.hash)history.replaceState(null,'','#home');
+window.addEventListener('hashchange',()=>showPage(true));
+showPage();
+aboutButton.addEventListener('click',()=>{
+  const open=aboutMenu.classList.toggle('open');
+  aboutButton.setAttribute('aria-expanded',String(open));
+});
+document.addEventListener('click',event=>{
+  if(!aboutMenu.contains(event.target)){
+    aboutMenu.classList.remove('open');
+    aboutButton.setAttribute('aria-expanded','false');
+  }
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    aboutMenu.classList.remove('open');
+    aboutButton.setAttribute('aria-expanded','false');
+  }
+});
 
 /* ============== countdown ============== */
 (function(){
@@ -353,9 +552,9 @@ for(let i=1;i<=4;i++){
   <fieldset data-member="${i}">
     <legend>Member ${i}${i===1?' (team leader)':''}</legend>
     <div class="fields">
-      <label>Full name <input type="text" name="Member ${i} name" placeholder="Name" ${i===1?'required':''}></label>
-      <label>USN <input type="text" name="Member ${i} USN" placeholder="e.g. 4AJ22CS001" style="text-transform:uppercase" ${i===1?'required':''}></label>
-      <label>Email <input type="email" name="Member ${i} email" placeholder="name@example.com" ${i===1?'required':''}></label>
+      <label>Full name <input type="text" name="Member ${i} name" placeholder="Name" required></label>
+      <label>USN <input type="text" name="Member ${i} USN" placeholder="e.g. 4AJ22CS001" style="text-transform:uppercase" required></label>
+      <label>Email <input type="email" name="Member ${i} email" placeholder="name@example.com" required></label>
     </div>
   </fieldset>`);
 }
@@ -387,14 +586,11 @@ function validate(){
   if(phone.value.trim()&&!/^[6-9]\d{9}$/.test(phone.value.replace(/\D/g,'').slice(-10)))flag(phone);
 
   const emails=new Set(), usns=new Set();
-  let count=0;
   form.querySelectorAll('[data-member]').forEach(fs=>{
     const inputs=[...fs.querySelectorAll('input')],
-          filled=inputs.filter(i=>i.value.trim()),
-          required=fs.dataset.member==='1';
-    if(!filled.length&&!required)return;
-    count++;
+        filled=inputs.filter(i=>i.value.trim());
     inputs.forEach(i=>{if(!i.value.trim())flag(i)});
+      if(!filled.length)return;
     const [n,u,e]=inputs;
     if(u.value.trim()&&!/^[A-Za-z0-9]{8,12}$/.test(u.value.trim()))flag(u);
     if(e.value.trim()){
@@ -410,7 +606,7 @@ function validate(){
   if(!okExt.test(f.name)){setMsg('Only PowerPoint files (.ppt or .pptx) are accepted.','err');return false}
   if(f.size>MAX_MB*1048576){setMsg(`Your file is larger than ${MAX_MB} MB. Compress the images in your presentation and upload it again.`,'err');return false}
   if(bad.length){
-    setMsg('Please fix the highlighted fields. Each USN needs 8 to 12 letters or digits, and each email and USN must be unique.','err');
+    setMsg('Enter all four team members. Each USN needs 8 to 12 letters or digits, and each email and USN must be unique.','err');
     bad[0].focus();return false;
   }
   return true;
@@ -441,8 +637,7 @@ form.addEventListener('submit',async ev=>{
     const data=await res.json().catch(()=>({}));
     if(res.ok && String(data.success)!=='false'){
       setMsg('');form.reset();showFile();
-      document.getElementById('thanks').classList.add('open');
-      document.getElementById('closeThanks').focus();
+      location.hash='thank-you';
     }else{
       throw new Error(data.message||'Server error');
     }
@@ -453,8 +648,6 @@ form.addEventListener('submit',async ev=>{
     btn.disabled=false;btn.textContent='Submit idea';
   }
 });
-document.getElementById('closeThanks').addEventListener('click',()=>document.getElementById('thanks').classList.remove('open'));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('thanks').classList.remove('open')});
 </script>
 </body>
 </html>
